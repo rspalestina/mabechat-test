@@ -1,0 +1,19 @@
+
+declared-services:
+  Cloudant-Test-Mabe:
+    label: Cloudant NoSQL DB
+    plan: Lite
+  ConversationStd:
+    label: conversation
+    plan: Standard
+applications:
+- name: mabechat_agente
+  command: npm start
+  path: .
+  memory: 256M
+  instances: 1
+  services:
+  - ConversationStd
+  - Cloudant-Test-Mabe
+  env:
+    NPM_CONFIG_PRODUCTION: false
